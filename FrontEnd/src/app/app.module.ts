@@ -19,6 +19,7 @@ import { MemberlistComponent } from './adminpanel/memberlist/memberlist.componen
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2OrderModule } from 'ng2-order-pipe';
+import { ContactlistComponent } from './adminpanel/contactlist/contactlist.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { Ng2OrderModule } from 'ng2-order-pipe';
     ContactComponent,
     ProjectsComponent,
     MemberCardComponent,
-    MemberlistComponent
+    MemberlistComponent,
+    ContactlistComponent
   ],
   imports: [
     BrowserModule,

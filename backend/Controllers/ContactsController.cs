@@ -13,9 +13,8 @@ namespace backendapi.Controllers
         public ContactsController(DataContext context)
         {
             _context = context;
-
         }
-
+        //GET: api/GetContact
         [HttpGet]
         public ActionResult<Contact> GetContacts()
         {
@@ -31,7 +30,7 @@ namespace backendapi.Controllers
         }
          
         [HttpPost]
-        public async Task<IActionResult> CreateContact([FromBody] Contact contact)
+        public async Task<IActionResult> CreateContact(Contact contact)
         {
             if(!ModelState.IsValid)
                return BadRequest(ModelState);
