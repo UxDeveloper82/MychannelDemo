@@ -1,3 +1,6 @@
+using backend.Data;
+using backend.Helpers;
+using backend.Interfaces;
 using backendapi.Data;
 using backendapi.Interfaces;
 using backendapi.Services;
@@ -13,6 +16,8 @@ namespace backendapi.Extensions
            IConfiguration config)
         {
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddDbContext<DataContext>(options =>
             {
                 options.UseSqlite(config.GetConnectionString("DefaultConnection"));
