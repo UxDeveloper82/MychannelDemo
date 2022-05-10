@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Member } from 'src/app/_models/member';
 import { User } from 'src/app/_models/user';
-import { RestService } from 'src/app/_services/rest.service';
+import { MembersService } from 'src/app/_services/members.service';
 
 @Component({
   selector: 'app-memberlist',
@@ -9,14 +10,15 @@ import { RestService } from 'src/app/_services/rest.service';
 })
 export class MemberlistComponent implements OnInit {
   users: User[] = [];
+  members: Member[];
   firstName: any;
   p: number = 1;
 
-  constructor(private restService: RestService ) { }
+  constructor(private membersService: MembersService ) { }
 
   ngOnInit(): void {
-    this.restService.getData().subscribe((res) => {
-      this.users = res;
+    this.membersService.getMembers().subscribe(res => {
+      this.members = res;
     })
   }
 

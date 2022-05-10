@@ -1,22 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Member } from 'src/app/_models/member';
+import { MembersService } from 'src/app/_services/members.service';
 
 @Component({
   selector: 'app-member-list',
   templateUrl: './member-list.component.html',
-  styleUrls: ['./member-list.component.css']
+  styleUrls: ['./member-list.component.css'],
 })
 export class MemberListComponent implements OnInit {
-   members: Member[];
+  members: Member[];
 
-  constructor(private http: HttpClient) { }
+  constructor(private memberService: MembersService) {}
 
   ngOnInit(): void {
-    this.http.get<Member[]>('data/UserSeedData.json').subscribe(members =>{
-      this.members = members;
-      console.log(members);
-    })
+    this.loadMembers();
   }
 
+  loadMembers() {
+    this.memberService.getMembers().subscribe(members => {
+      this.members = members;
+    })
+  }
 }
