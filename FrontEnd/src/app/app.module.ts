@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +19,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { ContactlistComponent } from './adminpanel/contactlist/contactlist.component';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+import { MemberDetailComponent } from './members/member-detail/member-detail.component';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { SharedModule } from './_modules/shared.module';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
     ProjectsComponent,
     MemberCardComponent,
     MemberlistComponent,
-    ContactlistComponent
+    ContactlistComponent,
+    MemberDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -45,10 +47,8 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
     Ng2OrderModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
-    BsDropdownModule.forRoot(),
-    ToastrModule.forRoot({
-      positionClass: 'toast-bottom-right'
-    })
+    NgxGalleryModule,
+    SharedModule
 
   ],
   providers: [
