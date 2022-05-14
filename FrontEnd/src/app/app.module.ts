@@ -22,6 +22,9 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { SharedModule } from './_modules/shared.module';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 
 
 @NgModule({
@@ -36,7 +39,8 @@ import { SharedModule } from './_modules/shared.module';
     MemberCardComponent,
     MemberlistComponent,
     ContactlistComponent,
-    MemberDetailComponent
+    MemberDetailComponent,
+    MemberEditComponent
   ],
   imports: [
     BrowserModule,
@@ -48,11 +52,13 @@ import { SharedModule } from './_modules/shared.module';
     Ng2SearchPipeModule,
     NgxPaginationModule,
     NgxGalleryModule,
-    SharedModule
+    SharedModule,
+    NgxSpinnerModule
 
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })

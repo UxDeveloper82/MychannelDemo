@@ -16,6 +16,7 @@ namespace backend.Helpers
              src.Photos.FirstOrDefault(x =>x.IsMain).Url))
             .ForMember(des =>des.Age, opt =>opt.MapFrom(src=>src.DateOfBirth.CalculateAge()));
             CreateMap<Photo, PhotoDto>(); 
+            CreateMap<MemberUpdateDto, AppUser>();
         }
     }
 }
