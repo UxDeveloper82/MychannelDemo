@@ -1,6 +1,8 @@
 using backend.Data;
+using backend.Entities;
 using backend.Helpers;
 using backend.Interfaces;
+using backend.Services;
 using backendapi.Data;
 using backendapi.Interfaces;
 using backendapi.Services;
@@ -15,7 +17,9 @@ namespace backendapi.Extensions
         public static IServiceCollection AddApplicationServices(this IServiceCollection services,
            IConfiguration config)
         {
+            services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IPhotoService,PhotoService>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddDbContext<DataContext>(options =>

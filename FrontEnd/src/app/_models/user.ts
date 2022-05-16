@@ -7,4 +7,5 @@ export interface User {
   salary: string;
   username: string;
   token: string;
+  photoUrl: string;
 }
