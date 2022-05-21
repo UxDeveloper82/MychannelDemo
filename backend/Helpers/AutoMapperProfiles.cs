@@ -3,6 +3,7 @@ using AutoMapper;
 using backend.Dtos;
 using backend.Entities;
 using backend.Extensions;
+using backendapi.Dtos;
 using backendapi.Entities;
 
 namespace backend.Helpers
@@ -17,6 +18,7 @@ namespace backend.Helpers
             .ForMember(des =>des.Age, opt =>opt.MapFrom(src=>src.DateOfBirth.CalculateAge()));
             CreateMap<Photo, PhotoDto>(); 
             CreateMap<MemberUpdateDto, AppUser>();
+            CreateMap<RegisterDto, AppUser>();
         }
     }
 }
