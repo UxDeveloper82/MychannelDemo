@@ -1,5 +1,7 @@
+using backend.Extensions;
 using backendapi.Data;
 using backendapi.Extensions;
+using backendapi.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,6 +33,7 @@ namespace backendapi
             services.AddApplicationServices(_config);
             services.AddControllers();
             services.AddCors();
+             services.AddIdentityServices(_config);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "backendapi", Version = "v1" });
@@ -46,6 +49,8 @@ namespace backendapi
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "backendapi v1"));
             }
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
 

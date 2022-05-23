@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using backend.Dtos;
+using backend.Helpers;
 using backendapi.Entities;
 
 namespace backend.Interfaces
@@ -12,7 +13,7 @@ namespace backend.Interfaces
          Task<IEnumerable<AppUser>> GetUsersAsync();
          Task<AppUser> GetUserByIdAsync(int id);
          Task<AppUser> GetUserByUsernameAsync(string username);
-         Task<IEnumerable<MemberDto>> GetMembersAsync();
+         Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams);
          Task<MemberDto> GetMemberAsync(string username);
     }
 }
