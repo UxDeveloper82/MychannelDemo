@@ -17,7 +17,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace backendapi.Controllers
 {
-
+    [Authorize]
     public class UsersController : BaseApiController
     {
         private readonly IUserRepository _userRepository;

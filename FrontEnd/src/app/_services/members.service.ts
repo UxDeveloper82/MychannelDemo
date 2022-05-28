@@ -31,12 +31,11 @@ export class MembersService {
    }
 
    setUserParams(params: UserParams) {
-      this.userParams = new UserParams(this.user);
-      return this.userParams;
+      this.userParams = params;
    }
 
    resetUserParams() {
-     this.userParams = this.memberCache.get(Object.values(this.userParams).join('-'));
+     this.userParams = new UserParams(this.user);
      return this.userParams;
    }
 
@@ -86,6 +85,16 @@ export class MembersService {
 
   deletePhoto(photoId: number) {
     return this.http.delete(this.baseUrl + 'users/delete-photo/'+ photoId);
+  }
+
+  addLike(username: string) {
+    return this.http.post(this.baseUrl + 'likes/' + username, {})
+  }
+
+  getLikes(predicate: string, pageNumber, pageSize) {
+    let params = this.getPaginationHeaders(pageNumber, pageSize);
+    params = params.append('predicate', predicate);
+    return this.getPaginatedResult<Partial<Member[]>>(this.baseUrl + 'likes', params);
   }
 
   private getPaginatedResult<T>(url, params) {

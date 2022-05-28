@@ -28,6 +28,8 @@ import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { DateInputComponent } from './_forms/date-input/date-input.component';
+import { ListsComponent } from './lists/lists.component';
+import { ErrorInterceptor } from './_interceptors/error.interceptor';
 
 
 @NgModule({
@@ -46,7 +48,8 @@ import { DateInputComponent } from './_forms/date-input/date-input.component';
     MemberEditComponent,
     PhotoEditorComponent,
     TextInputComponent,
-    DateInputComponent
+    DateInputComponent,
+    ListsComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +66,7 @@ import { DateInputComponent } from './_forms/date-input/date-input.component';
     ReactiveFormsModule
   ],
   providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true},
   ],
