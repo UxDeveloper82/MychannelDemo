@@ -30,6 +30,8 @@ import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { DateInputComponent } from './_forms/date-input/date-input.component';
 import { ListsComponent } from './lists/lists.component';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
+import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
+import { MessagesComponent } from './messages/messages.component';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { ErrorInterceptor } from './_interceptors/error.interceptor';
     PhotoEditorComponent,
     TextInputComponent,
     DateInputComponent,
-    ListsComponent
+    ListsComponent,
+    MemberMessagesComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
