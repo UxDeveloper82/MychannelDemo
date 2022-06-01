@@ -33,7 +33,7 @@ namespace backend.Data
             if(likesParams.Predicate == "liked")
             {
                 likes = likes.Where(like => like.SourceUserId == likesParams.UserId);
-                users = likes.Select(like =>like.SourceUser);
+                users = likes.Select(like =>like.LikedUser);
             }
 
             if(likesParams.Predicate == "likedBy")
